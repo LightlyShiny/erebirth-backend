@@ -1,6 +1,6 @@
 package com.lightlyshiny.backend.repository;
 
-import com.lightlyshiny.backend.entity.UserEntity;
+import com.lightlyshiny.backend.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

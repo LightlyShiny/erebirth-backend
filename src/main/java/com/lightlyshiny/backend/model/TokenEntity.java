@@ -1,4 +1,4 @@
-package com.lightlyshiny.backend.entity;
+package com.lightlyshiny.backend.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,21 +11,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserEntity {
+public class TokenEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long identifier;
 
     @Column(nullable = false, unique = true)
-    private String email;
+    private String token;
 
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private Boolean active;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(nullable = false)
-    private RoleEntity role;
+    private UserEntity user;
 }

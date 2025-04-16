@@ -1,8 +1,10 @@
 package com.lightlyshiny.backend.repository;
 
-import com.lightlyshiny.backend.entity.RoleEntity;
+import com.lightlyshiny.backend.model.RoleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
+import java.util.Optional;
 
+public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
+    Optional<RoleEntity> findByName(String name);
 }

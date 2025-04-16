@@ -8,17 +8,32 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(InactiveAccountException.class)
-    public ResponseEntity<?> inactiveAccountException() {
+    public ResponseEntity<Void> inactiveAccountException() {
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
+    @ExceptionHandler(RoleNotFoundException.class)
+    public ResponseEntity<Void> roleNotFound() {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(TokenNotFoundException.class)
+    public ResponseEntity<Void> tokenNotFound() {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserFoundException.class)
+    public ResponseEntity<Void> userFound() {
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<?> userNotFound() {
+    public ResponseEntity<Void> userNotFound() {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(WrongPasswordException.class)
-    public ResponseEntity<?> wrongPassword() {
+    public ResponseEntity<Void> wrongPassword() {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }

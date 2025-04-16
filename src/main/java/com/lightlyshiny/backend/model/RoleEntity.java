@@ -1,4 +1,4 @@
-package com.lightlyshiny.backend.entity;
+package com.lightlyshiny.backend.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
