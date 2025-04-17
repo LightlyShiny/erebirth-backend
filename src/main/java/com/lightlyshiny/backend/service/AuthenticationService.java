@@ -1,8 +1,6 @@
 package com.lightlyshiny.backend.service;
 
-import com.lightlyshiny.backend.dto.LoginRequestDTO;
-import com.lightlyshiny.backend.dto.LoginResponseDTO;
-import com.lightlyshiny.backend.dto.RegisterRequestDTO;
+import com.lightlyshiny.backend.dto.*;
 import com.lightlyshiny.backend.model.RoleEntity;
 import com.lightlyshiny.backend.model.TokenEntity;
 import com.lightlyshiny.backend.model.UserEntity;
@@ -71,6 +69,34 @@ public class AuthenticationService {
         }
         UserEntity user = token.get().getUser();
         user.setActive(true);
+        userRepository.save(user);
+        tokenRepository.delete(token.get());
+    }
+
+    public void recover(RecoverRequestDTO request) {
+        Optional<UserEntity> user = userRepository.findByEmail(request.getEmail());
+        if (user.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+        if (! user.get().getActive()) {
+            throw new InactiveAccountException();
+        }
+        Optional<TokenEntity> token = tokenRepository.findByUser(user.get());
+        if (token.isPresent()) {
+            tokenRepository.delete(token.get());
+        }
+        TokenEntity newToken = new TokenEntity(null, UUID.randomUUID().toString(), user.get());
+        newToken = tokenRepository.save(newToken);
+        mailService.sendRecoverLink(user.get(), newToken);
+    }
+
+    public void reset(ResetRequestDTO request) {
+        Optional<TokenEntity> token = tokenRepository.findByToken(request.getUuid());
+        if (token.isEmpty()) {
+            throw new TokenNotFoundException();
+        }
+        UserEntity user = token.get().getUser();
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         userRepository.save(user);
         tokenRepository.delete(token.get());
     }

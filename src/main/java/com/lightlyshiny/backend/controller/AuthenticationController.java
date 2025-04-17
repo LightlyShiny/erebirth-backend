@@ -1,8 +1,6 @@
 package com.lightlyshiny.backend.controller;
 
-import com.lightlyshiny.backend.dto.LoginRequestDTO;
-import com.lightlyshiny.backend.dto.LoginResponseDTO;
-import com.lightlyshiny.backend.dto.RegisterRequestDTO;
+import com.lightlyshiny.backend.dto.*;
 import com.lightlyshiny.backend.service.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +28,18 @@ public class AuthenticationController {
     @PostMapping("/register")
     public ResponseEntity<Void> register(@Valid @RequestBody RegisterRequestDTO request) {
         authenticationService.register(request);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/recover")
+    public ResponseEntity<Void> recover(@Valid @RequestBody RecoverRequestDTO request) {
+        authenticationService.recover(request);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/reset")
+    public ResponseEntity<Void> reset(@Valid @RequestBody ResetRequestDTO request) {
+        authenticationService.reset(request);
         return ResponseEntity.ok().build();
     }
 }

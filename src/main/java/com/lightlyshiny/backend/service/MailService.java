@@ -24,4 +24,13 @@ public class MailService {
         mail.setText(frontEndProperties.getUrl() + "/authentication/activate?uuid=" + token.getToken());
         sender.send(mail);
     }
+
+    public void sendRecoverLink(UserEntity user, TokenEntity token) {
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setFrom(mailProperties.getUsername());
+        mail.setTo(user.getEmail());
+        mail.setSubject("eRebirth account password recovery link");
+        mail.setText(frontEndProperties.getUrl() + "/authentication/reset?uuid=" + token.getToken());
+        sender.send(mail);
+    }
 }
