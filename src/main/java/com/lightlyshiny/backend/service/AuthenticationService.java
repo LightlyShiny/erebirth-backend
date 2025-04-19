@@ -55,7 +55,8 @@ public class AuthenticationService {
                 request.getEmail(),
                 passwordEncoder.encode(request.getPassword()),
                 false,
-                role.get());
+                role.get(),
+                null);
         newUser = userRepository.save(newUser);
         TokenEntity newToken = new TokenEntity(null, UUID.randomUUID().toString(), newUser);
         newToken = tokenRepository.save(newToken);

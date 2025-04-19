@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,4 +30,6 @@ public class UserEntity {
     @ManyToOne
     @JoinColumn(nullable = false)
     private RoleEntity role;
+
+    private LocalDateTime subscriptionEnd;
 }

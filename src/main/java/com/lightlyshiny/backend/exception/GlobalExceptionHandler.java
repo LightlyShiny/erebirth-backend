@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    @ExceptionHandler(ActiveSubscriptionException.class)
+    public ResponseEntity<Void> activeSubscription() {
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(InactiveAccountException.class)
     public ResponseEntity<Void> inactiveAccountException() {
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
