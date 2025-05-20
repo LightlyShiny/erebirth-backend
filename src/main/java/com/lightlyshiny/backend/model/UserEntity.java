@@ -18,6 +18,9 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long identifier;
 
+    @Column(nullable = false)
+    private String name;
+
     @Column(nullable = false, unique = true)
     private String email;
 

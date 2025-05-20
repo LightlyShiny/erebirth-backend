@@ -1,6 +1,10 @@
 package com.lightlyshiny.backend.controller;
 
-import com.lightlyshiny.backend.dto.*;
+import com.lightlyshiny.backend.dto.request.LoginRequestDTO;
+import com.lightlyshiny.backend.dto.request.RecoverRequestDTO;
+import com.lightlyshiny.backend.dto.request.RegisterRequestDTO;
+import com.lightlyshiny.backend.dto.request.ResetRequestDTO;
+import com.lightlyshiny.backend.dto.response.LoginResponseDTO;
 import com.lightlyshiny.backend.service.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

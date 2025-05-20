@@ -1,4 +1,4 @@
-package com.lightlyshiny.backend.dto;
+package com.lightlyshiny.backend.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

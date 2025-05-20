@@ -1,4 +1,4 @@
-package com.lightlyshiny.backend.dto;
+package com.lightlyshiny.backend.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

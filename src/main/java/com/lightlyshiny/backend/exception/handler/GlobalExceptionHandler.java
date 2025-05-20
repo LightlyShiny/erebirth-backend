@@ -1,5 +1,6 @@
-package com.lightlyshiny.backend.exception;
+package com.lightlyshiny.backend.exception.handler;
 
+import com.lightlyshiny.backend.exception.custom.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

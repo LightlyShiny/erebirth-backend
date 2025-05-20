@@ -1,4 +1,4 @@
-package com.lightlyshiny.backend.dto;
+package com.lightlyshiny.backend.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -9,6 +9,9 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class RegisterRequestDTO {
+    @NotBlank
+    private String name;
+
     @NotBlank
     @Email
     private String email;

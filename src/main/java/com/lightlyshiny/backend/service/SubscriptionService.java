@@ -2,9 +2,9 @@ package com.lightlyshiny.backend.service;
 
 import com.lightlyshiny.backend.configuration.FrontEndProperties;
 import com.lightlyshiny.backend.configuration.StripeProperties;
-import com.lightlyshiny.backend.dto.CheckoutResponseDTO;
-import com.lightlyshiny.backend.exception.ActiveSubscriptionException;
-import com.lightlyshiny.backend.exception.UserNotFoundException;
+import com.lightlyshiny.backend.dto.response.CheckoutResponseDTO;
+import com.lightlyshiny.backend.exception.custom.ActiveSubscriptionException;
+import com.lightlyshiny.backend.exception.custom.UserNotFoundException;
 import com.lightlyshiny.backend.model.UserEntity;
 import com.lightlyshiny.backend.repository.UserRepository;
 import com.stripe.Stripe;

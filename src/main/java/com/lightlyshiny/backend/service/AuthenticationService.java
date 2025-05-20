@@ -1,10 +1,14 @@
 package com.lightlyshiny.backend.service;
 
-import com.lightlyshiny.backend.dto.*;
+import com.lightlyshiny.backend.dto.request.LoginRequestDTO;
+import com.lightlyshiny.backend.dto.request.RecoverRequestDTO;
+import com.lightlyshiny.backend.dto.request.RegisterRequestDTO;
+import com.lightlyshiny.backend.dto.request.ResetRequestDTO;
+import com.lightlyshiny.backend.dto.response.LoginResponseDTO;
+import com.lightlyshiny.backend.exception.custom.*;
 import com.lightlyshiny.backend.model.RoleEntity;
 import com.lightlyshiny.backend.model.TokenEntity;
 import com.lightlyshiny.backend.model.UserEntity;
-import com.lightlyshiny.backend.exception.*;
 import com.lightlyshiny.backend.repository.RoleRepository;
 import com.lightlyshiny.backend.repository.TokenRepository;
 import com.lightlyshiny.backend.repository.UserRepository;
@@ -52,6 +56,7 @@ public class AuthenticationService {
             throw new RoleNotFoundException();
         }
         UserEntity newUser = new UserEntity(null,
+                request.getName(),
                 request.getEmail(),
                 passwordEncoder.encode(request.getPassword()),
                 false,

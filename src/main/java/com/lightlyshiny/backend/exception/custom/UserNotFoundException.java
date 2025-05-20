@@ -1,4 +1,4 @@
-package com.lightlyshiny.backend.exception;
+package com.lightlyshiny.backend.exception.custom;
 
 public class UserNotFoundException extends RuntimeException {
 

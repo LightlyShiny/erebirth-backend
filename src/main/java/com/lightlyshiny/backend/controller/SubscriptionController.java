@@ -1,6 +1,6 @@
 package com.lightlyshiny.backend.controller;
 
-import com.lightlyshiny.backend.dto.CheckoutResponseDTO;
+import com.lightlyshiny.backend.dto.response.CheckoutResponseDTO;
 import com.lightlyshiny.backend.service.SubscriptionService;
 import com.stripe.exception.StripeException;
 import lombok.RequiredArgsConstructor;
